@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  backend:
+    build: ./acwatts_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./acwatts_backend:/code
+    environment:
+      - DATABASE_URL=postgres://postgres:your_password@db:5432/acwatts_db
+
+  frontend:
+    build: ./acwatts_frontend
+    ports:
+      - "4173:4173"
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: acwatts_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_password
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
