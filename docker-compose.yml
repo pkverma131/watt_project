@@ -8,7 +8,7 @@ services:
     volumes:
       - ./acwatts_backend:/code
     environment:
-      - DATABASE_URL=postgres://postgres:your_password@db:5432/acwatts_db
+      - DATABASE_URL=postgres://acw:teeza123@db:5432/acwatts_db
 
   frontend:
     build: ./acwatts_frontend
@@ -19,7 +19,7 @@ services:
     image: postgres:latest
     environment:
       POSTGRES_DB: acwatts_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: your_password
+      POSTGRES_USER: acw
+      POSTGRES_PASSWORD: teeza123
     volumes:
       - ./pgdata:/var/lib/postgresql/data
