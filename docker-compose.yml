@@ -25,7 +25,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./acwatts_frontend:/app
+      - ./acwatts_frontend:/app/local
     depends_on:
       - backend
 
