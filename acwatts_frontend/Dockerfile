@@ -13,9 +13,6 @@ RUN yarn install --frozen-lockfile
 # Copy project files
 COPY . .
 
-# Add node_modules/.bin to the PATH
-ENV PATH /app/node_modules/.bin:$PATH
-
 # Build the application
 RUN yarn build
 
