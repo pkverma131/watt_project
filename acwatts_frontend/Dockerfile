@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package.json .
 
 # Install dependencies
-RUN yarn 
+RUN npm install 
 
 # Copy project files
 COPY . .
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Run the Vite development server
-CMD ["yarn", "dev", "--debug"]
+CMD ["npm", "run", "dev"]
