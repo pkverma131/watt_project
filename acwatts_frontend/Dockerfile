@@ -1,6 +1,8 @@
 # Use an official node runtime as a parent image
 FROM node:18
 
+RUN npm install -g yarn
+
 # Set working directory
 WORKDIR /app
 
