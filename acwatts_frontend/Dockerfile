@@ -5,19 +5,16 @@ FROM node:18
 WORKDIR /app
 
 # Copy package.json and yarn.lock
-COPY package.json yarn.lock ./
+COPY package.json .
 
 # Install dependencies
-RUN yarn install --frozen-lockfile
+RUN yarn 
 
 # Copy project files
 COPY . .
-
-# Build the application
-RUN yarn build
 
 # Expose the port the app runs on
 EXPOSE 3000
 
 # Run the Vite development server
-CMD ["yarn", "run", "dev"]
+CMD ["yarn", "dev", "--debug"]
