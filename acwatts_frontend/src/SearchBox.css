@@ -1,0 +1,15 @@
+/* SearchBox.css */
+
+/* Add styles to the search container */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  /* Add styles to the auto-suggestion dropdown */
+  .list-group {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  

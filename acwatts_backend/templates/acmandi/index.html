@@ -1,0 +1,36 @@
+{% extends "acmandi/top_navigation.html" %}
+
+{% block content %}
+	{% load static %}
+	<div class="site-banner">
+		<img class="site-banner" src="{%static 'media/home_page_banner.avif' %}" alt="">
+	</div>
+	<div class="tiles-container">
+		<ul>
+		{% for tile in tiles %}
+			<li>
+				<div class="sec-head-stack" style="justify-content: start;">
+					<h2 class="stack-banner-title" style="color:rgb(0,0,0) !important;">{{ tile.description }}</h2>
+				</div>
+				<div class="cat-tiles">
+				{% for tile_data in tile.tile %}
+					<div class="cat-tile">
+						<a data-testid="image-carousal-adobe" href="/admin/index/tile/{{ tile_data.id }}">
+							<span class="lazy-load-image-background blur lazy-load-image-loaded" style="color: transparent;">
+								<img src="{% get_media_prefix %}{{ tile_data.thumbnail }}">
+							</span>
+						</a>
+					</div>
+				{% endfor %}
+				</div>
+			</li>
+		{% endfor %}
+		</ul>
+  	<h2>Top 10 ACs in India</h2>
+  	<p>Based on consumer reviews, brand reputation, and specifications, here are the top 10 air conditioners in India:</p>
+  	<ul>
+    		{% for product in products %}
+       			<li>{{ product }}</li>
+    		{% endfor %}
+  	</ul>
+{% endblock %}

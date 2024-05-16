@@ -1,0 +1,1 @@
+PROJECT_BASE_LOCATION='/home/ubuntu/devwork/digital-properties/acmandi/data_loader/'

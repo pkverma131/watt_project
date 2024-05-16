@@ -1,0 +1,19 @@
+/* BlogPostItem.css */
+.blog-post-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .blog-post-item h2 {
+    margin-bottom: 10px;
+  }
+  
+  .blog-post-item p.key-points {
+    font-weight: bold;
+  }
+  .blog-post-item a {
+    text-decoration: none;
+    color: #007bff;
+  }

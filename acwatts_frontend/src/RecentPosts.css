@@ -1,0 +1,30 @@
+/* RecentPosts.css */
+.recent-posts {
+    background-color: #f9f9f9;
+    padding: 2px;
+  }
+  
+  .recent-posts h4 {
+    margin-bottom: 10px;
+  }
+  
+  .recent-posts ul {
+    list-style: none;
+    padding: 4;
+  }
+  
+  .recent-posts li {
+    margin-bottom: 10px;
+  }
+  
+  .recent-posts a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .recent-posts a:hover {
+    text-decoration: underline;
+  }
+  .heading {
+    margin-bottom: 2px;
+  }

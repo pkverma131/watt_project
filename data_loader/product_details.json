@@ -1,0 +1,41 @@
+Hey mate, can you help me to insert data ( format mentioned below, will come from json files of a directory ) inside the tables. 
+Django orm of the tables also mentioned below, I want to use django management command
+
+{"product_tile": "", 
+"overview_text": "", 
+"mrp": null, 
+"product_price": null, 
+"key_features": ["",""], 
+"specifications": [
+    {"specification_key": "", "specification_value": ""},
+    {"specification_key": "", "specification_value": ""}
+    ]
+}
+
+class Product(AuditModelMixin):
+# brand_name is present inside specifications where specification_key is brand and specification_value is brand_name this name can be used to filter the id (forein key) from brand table
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE) 
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=500)
+    thumbnail = models.ImageField(upload_to='products/thumbnail/', default=None)
+
+
+#key_features
+class ProductHighlight(AuditModelMixin):
+    highlight = models.CharField(max_length=50)
+    type = models.CharField(max_length=50, choices=(('1', 'TITLE_TAG'), ('2', 'FEATURE')))
+
+class Specification(AuditModelMixin):
+    specification_type = models.ForeignKey(SpecificationType, on_delete=models.CASCADE)
+    label = models.CharField(max_length=50)
+    value = models.CharField(max_length=100)
+
+
+class ProductToProductHighlight(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    highlight = models.ForeignKey(ProductHighlight, on_delete=models.CASCADE)
+
+
+class ProductToSpecification(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    specification = models.ForeignKey(Specification, on_delete=models.CASCADE)

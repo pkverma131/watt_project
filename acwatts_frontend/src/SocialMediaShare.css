@@ -1,0 +1,15 @@
+/* SocialMediaShare.css */
+.social-media-share {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .heading {
+    margin-bottom: 2px;
+  }
+  
+  .icons {
+    display: flex;
+    gap: 1rem;
+  }
+  
