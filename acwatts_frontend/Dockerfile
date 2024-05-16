@@ -1,28 +1,23 @@
-# Use an official Node runtime as a parent image
-FROM node:20
+# Use an official node runtime as a parent image
+FROM node:18
 
 # Set working directory
 WORKDIR /app
 
-# Install TypeScript globally
-RUN npm install -g typescript
-
-# Install Vite globally
-RUN npm install -g vite
+# Copy package.json and yarn.lock
+COPY package.json yarn.lock ./
 
 # Install dependencies
-COPY package.json yarn.lock ./
 RUN yarn install
 
-# Copy project
-COPY . ./
+# Copy project files
+COPY . .
 
-# Build project
-RUN yarn build
+# Build the application
+# RUN yarn build
 
-# Expose port
-EXPOSE 4173
+# Expose the port the app runs on
+EXPOSE 3000
 
-# Command to run the app
-CMD ["vite", "preview", "--host", "0.0.0.0"]
-
+# Run the Vite development server
+CMD ["yarn", "run", "dev"]

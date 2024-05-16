@@ -2,24 +2,39 @@ version: '3'
 
 services:
   backend:
-    build: ./acwatts_backend
+    build:
+      context: ./acwatts_backend
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
-      - ./acwatts_backend:/code
+      - ./acwatts_backend:/app
+    depends_on:
+      - database
     environment:
-      - DATABASE_URL=postgres://acw:teeza123@db:5432/acwatts_db
+      - MYSQL_DATABASE=acm_db
+      - MYSQL_USER=acmandi
+      - MYSQL_PASSWORD=acmandi123
+      - MYSQL_HOST=database
+      - MYSQL_PORT=3306
 
   frontend:
-    build: ./acwatts_frontend
+    build:
+      context: ./acwatts_frontend
+      dockerfile: Dockerfile
     ports:
-      - "4173:4173"
-
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: acwatts_db
-      POSTGRES_USER: acw
-      POSTGRES_PASSWORD: teeza123
+      - "3000:3000"
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - ./acwatts_frontend:/app
+    depends_on:
+      - backend
+
+  database:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: acm_db
+      MYSQL_USER: acmandi
+      MYSQL_PASSWORD: acmandi123
+      MYSQL_ROOT_PASSWORD: teeza123
+    ports:
+      - "3306:3306"
