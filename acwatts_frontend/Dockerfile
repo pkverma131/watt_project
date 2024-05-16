@@ -1,8 +1,6 @@
 # Use an official node runtime as a parent image
 FROM node:18
 
-RUN npm install -g yarn
-
 # Set working directory
 WORKDIR /app
 
@@ -16,7 +14,7 @@ RUN yarn install
 COPY . .
 
 # Build the application
-# RUN yarn build
+RUN yarn build
 
 # Expose the port the app runs on
 EXPOSE 3000
