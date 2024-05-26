@@ -33,7 +33,7 @@ const Navigation = () => {
               <Link to="/catalogue/products" className="nav-link">Air Conditioners</Link>
             </li>
             <li className="nav-item">
-              <Link to="/blogs" className="nav-link">Blogs</Link>
+              <Link to="/blogs" className="nav-link">Articles</Link>
             </li>
           </ul>
         </div>

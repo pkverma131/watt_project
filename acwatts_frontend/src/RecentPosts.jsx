@@ -24,7 +24,7 @@ const RecentPosts = ({ tags }) => {
   return (
     <div className="recent-posts">
       <div className="heading">
-        <h4>Recent Posts</h4>
+        <h4>Related Articles</h4>
       </div>
       <ul>
         {recentPosts.map((post) => (

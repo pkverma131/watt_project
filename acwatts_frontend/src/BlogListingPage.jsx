@@ -23,7 +23,6 @@ const BlogListingPage = () => {
     <div className="blog-listing-page">
       <Navigation />
       <div className="container mt-4">
-        <h1>Blog Posts</h1>
         <div className="blog-list">
           {blogPosts.map((post) => (
             <BlogPostItem key={post.id} post={post} />
