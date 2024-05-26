@@ -1,4 +1,4 @@
-const isLocal = false;
+const isLocal = true;
 
 const LOCAL_API_URL = 'http://localhost:8000';
 const PROD_API_URL = 'https://acwatts.in:8000';

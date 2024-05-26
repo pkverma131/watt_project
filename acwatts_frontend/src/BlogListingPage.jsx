@@ -9,7 +9,7 @@ const BlogListingPage = () => {
 
   useEffect(() => {
     // Fetch blog posts from the API
-    fetch(`${API_URL}/article/api/v2/posts/`)
+    fetch(`${API_URL}/article/api/v2/posts/?type=article.BlogPage&fields=post_image`)
       .then((response) => response.json())
       .then((data) => {
         // Extract blog post items from the response

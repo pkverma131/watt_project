@@ -9,6 +9,13 @@ from wagtail.api import APIField
 class BlogPage(Page):
     author = models.CharField(max_length=255)
     date = models.DateField("Post date")
+    post_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
     body = StreamField([
         ('heading', blocks.CharBlock(form_classname="title")),
         ('paragraph', blocks.RichTextBlock()),
@@ -18,6 +25,7 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('author'),
         FieldPanel('date'),
+        FieldPanel('post_image'),
         FieldPanel('body'),
     ]
 
@@ -25,5 +33,6 @@ class BlogPage(Page):
     api_fields = [
         APIField('date'),
         APIField('body'),
+        APIField('post_image'),
         APIField('author'),
     ]
