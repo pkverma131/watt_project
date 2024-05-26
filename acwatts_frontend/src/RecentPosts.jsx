@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
 import './RecentPosts.css';
 import { API_URL } from './app.settings';
 
-const RecentPosts = () => {
+const RecentPosts = ({ tags }) => {
   const [recentPosts, setRecentPosts] = useState([]);
   const urlParts = window.location.pathname.split('/');
   const currentPostId = urlParts[urlParts.length - 1];
 
   useEffect(() => {
-    // Fetch the recent blog posts from the API
-    fetch(`${API_URL}/blog/posts/`)
-      .then((response) => response.json())
-      .then((data) => {
-        setRecentPosts(data);
-      })
-      .catch((error) => console.error('Error fetching recent posts:', error));
-  }, []);
+    if (tags && tags.length > 0) {
+      // Fetch the recent blog posts from the API
+      fetch(`${API_URL}/article/api/v2/posts/?type=article.BlogPage&tags=${tags.join(',')}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setRecentPosts(data.items); // Adjusted based on your API response structure
+        })
+        .catch((error) => console.error('Error fetching recent posts:', error));
+    }
+  }, [tags]);
 
   return (
     <div className="recent-posts">
@@ -28,7 +31,13 @@ const RecentPosts = () => {
           // Exclude the current page from the recent posts list
           post.id !== parseInt(currentPostId) && (
             <li key={post.id}>
-              <Link to={`/blog/${post.id}`}>{post.title}</Link>
+              <Card className="blog-post-item">
+                <Card.Body>
+                  <Card.Title>
+                    <Link to={`/blog/${post.id}`}>{post.title}</Link>
+                  </Card.Title>
+                </Card.Body>
+              </Card>
             </li>
           )
         ))}

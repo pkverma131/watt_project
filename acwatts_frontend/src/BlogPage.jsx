@@ -32,7 +32,7 @@ const BlogPage = () => {
             )}
           </div>
           <div className="col-lg-4">
-            <RecentPosts />
+            {blogPost && <RecentPosts tags={blogPost.tags} />}
             <SocialMediaShare />
           </div>
         </div>

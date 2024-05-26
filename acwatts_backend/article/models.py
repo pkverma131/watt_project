@@ -5,10 +5,22 @@ from wagtail import blocks
 from wagtail.admin.panels import FieldPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.api import APIField
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
+from modelcluster.fields import ParentalKey
+
+
+class BlogPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'BlogPage',
+        related_name='tagged_items',
+        on_delete=models.CASCADE
+    )
 
 class BlogPage(Page):
     author = models.CharField(max_length=255)
     date = models.DateField("Post date")
+    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     post_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -25,6 +37,7 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('author'),
         FieldPanel('date'),
+        FieldPanel('tags'),
         FieldPanel('post_image'),
         FieldPanel('body'),
     ]
@@ -35,4 +48,5 @@ class BlogPage(Page):
         APIField('body'),
         APIField('post_image'),
         APIField('author'),
+        APIField('tags'),
     ]
