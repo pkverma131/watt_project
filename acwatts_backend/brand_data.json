@@ -1,0 +1,42 @@
+[
+  {
+    "brand_name": "Blue Star",
+    "manufacturer_address": "Manufacturer Name & Address: Blue Star | Kasturi Buildings Mohan T Advani Chowk Jamshedji Tata Road Mumbai - 400020",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "China",
+    "brand_country": "India"
+  },
+  {
+    "brand_name": "Croma",
+    "manufacturer_address": null,
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "India"
+  },
+  {
+    "brand_name": "Godrej",
+    "manufacturer_address": "Manufacturer Name & Address: Godrej  Boyce Manufacturing Company Limited, Pirojshanagar, Vikhroli, Mumbai - 400079, India",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "India"
+  },
+  {
+    "brand_name": "LLOYD",
+    "manufacturer_address": null,
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "India"
+  },
+  {
+    "brand_name": "VOLTAS",
+    "manufacturer_address": "Manufacturer Name & Address: Voltas Limited. Voltas House 'A' Block Dr. Babasaheb Ambedkar Rd Chinchpokli Mumbai - 400 033 India",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "India"
+  }
+]

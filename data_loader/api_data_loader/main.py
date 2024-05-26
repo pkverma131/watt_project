@@ -3,7 +3,7 @@ from constants import API_BASE_URL, AC_API_URL, API_PAGE, AC_CATEGORIES
 from utils import generate_filename, write_josn_to_file
 
 
-PROJECT_BASE_LOCATION = '/home/ubuntu/devwork/digital-properties/acmandi/data_loader/'
+PROJECT_BASE_LOCATION = '/home/ubuntu/playground/watt_project/data_loader/'
 
 
 if __name__=='__main__':

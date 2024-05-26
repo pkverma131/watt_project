@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = 'Insert data from JSON files into the tables.'
 
     def handle(self, *args, **options):
-        json_files_directory = '/home/ubuntu/devwork/digital-properties/acmandi/data_loader/products'  # Update this with the directory containing your JSON files
+        json_files_directory = '/home/ubuntu/playground/watt_project/data_loader/products'  # Update this with the directory containing your JSON files
 
         json_files = [f for f in os.listdir(json_files_directory) if f.endswith('.json')]
 
@@ -17,7 +17,8 @@ class Command(BaseCommand):
             with open(file_path, 'r') as file:
                 data = json.load(file)
 
-            product_tile = data.get('product_tile', '')
+            product_title = data.get('product_title', '')
+            print(product_title)
             overview_text = data.get('overview_text', '')
             mrp = data.get('mrp')
             product_price = data.get('product_price')
@@ -36,16 +37,17 @@ class Command(BaseCommand):
             # Save Product instance
             
             # Check if a product with the same title already exists in the table
-            existing_product = Product.objects.filter(title=product_tile).first()
+            existing_product = Product.objects.filter(title=product_title).first()
 
             if existing_product:
-                self.stdout.write(f"Product '{product_tile}' already exists. Skipping insertion.")
+                self.stdout.write(f"Product '{product_title}' already exists. Skipping insertion.")
                 continue
 
             product = Product.objects.create(
                 brand=brand,
-                title=product_tile,
+                title=product_title,
                 description=overview_text[0:499],
+                model_number='None',
                 # mrp=mrp,
                 # product_price=product_price,
                 thumbnail=None  # You can update this with the path to the thumbnail image if available

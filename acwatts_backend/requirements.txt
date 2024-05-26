@@ -9,6 +9,7 @@ constantly==23.10.4
 cryptography==42.0.7
 cssselect==1.2.0
 Django==5.0.5
+django-filter==23.3
 django-cors-headers==4.3.1
 djangorestframework==3.15.1
 exceptiongroup==1.2.1
@@ -55,5 +56,5 @@ w3lib==2.1.2
 webdriver-manager==4.0.1
 wsproto==1.2.0
 zope.interface==6.3
-wagtail>=6.0,<6.1
-wagtail-font-awesome-svg>=1,<2
+wagtail==6.1.1
+wagtail-font-awesome-svg==1.0.1

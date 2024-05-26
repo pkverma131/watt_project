@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { API_URL } from './app.settings';
 
 const BillCalculator = ({ productId }) => {
   const [wattage, setWattage] = useState(0);
@@ -11,7 +12,7 @@ const BillCalculator = ({ productId }) => {
 
   useEffect(() => {
     // Fetch the product details from the API using the productId
-    fetch(`http://localhost:8000/catalogue/api/bill_amount/${productId}/`)
+    fetch(`${API_URL}/catalogue/api/bill_amount/${productId}/`)
       .then((response) => response.json())
       .then((data) => {
         setProductDetails(data);

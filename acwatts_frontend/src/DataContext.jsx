@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { API_URL } from './app.settings';
 
 const DataContext = createContext();
 
@@ -16,7 +17,7 @@ const DataProvider = ({ children }) => {
       setCachedData(cachedData);
     } else {
       // Fetch data from the backend API and update the cache
-      fetch('http://localhost:8000/catalogue/search/?query=${encodeURIComponent(query)}')
+      fetch(`${API_URL}/catalogue/search/?query=${encodeURIComponent(query)}`)
         .then((response) => response.json())
         .then((data) => {
           setCachedData(data);

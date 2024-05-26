@@ -6,7 +6,7 @@ class Command(BaseCommand):
     help = 'Capture brand names and addresses from products directory JSON files'
 
     def handle(self, *args, **options):
-        products_directory = '/home/ubuntu/devwork/digital-properties/acmandi/data_loader/products'  # Replace with the actual path to your products directory
+        products_directory = '/home/ubuntu/playground/watt_project/data_loader/products'  # Replace with the actual path to your products directory
         brand_data = []
         for filename in os.listdir(products_directory):
             if filename.endswith('.json'):

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SearchBox.css';
+import { API_URL } from './app.settings';
 
 const SearchBox = ({ onSelect }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -20,7 +21,7 @@ const SearchBox = ({ onSelect }) => {
   const handleSearchChange = (query) => {
     setSearchQuery(query);
 
-    fetch(`http://localhost:8000/catalogue/search/?query=${encodeURIComponent(query)}`)
+    fetch(`${API_URL}/catalogue/search/?query=${encodeURIComponent(query)}`)
       .then((response) => response.json())
       .then((data) => setAutoSuggestions(data))
       .catch((error) => console.error('Error fetching auto-suggestions:', error));

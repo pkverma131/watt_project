@@ -5,20 +5,19 @@ import RecentPosts from './RecentPosts';
 import SocialMediaShare from './SocialMediaShare';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import { API_URL } from './app.settings';
 
 const BlogPage = () => {
+  const { blogId } = useParams();
   const [blogPost, setBlogPost] = useState(null);
-  
-  const urlParts = window.location.pathname.split('/');
-  const id = urlParts[urlParts.length - 1];
 
   useEffect(() => {
-    // Fetch the blog post using the API based on the id
-    fetch(`http://localhost:8000/blog/posts/${id}/`)
+    // Fetch the blog post using the API based on the blogId
+    fetch(`${API_URL}/article/api/v2/posts/${blogId}/`)
       .then((response) => response.json())
       .then((data) => setBlogPost(data))
       .catch((error) => console.error('Error fetching blog post:', error));
-  }, [id]);
+  }, [blogId]);
 
   return (
     <div className="blog-page">

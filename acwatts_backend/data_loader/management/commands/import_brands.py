@@ -50,9 +50,9 @@ class Command(BaseCommand):
                         name=brand_name,
                         origin_country=brand_data.get('brand_country'),
                         manufacture_country=brand_data.get('origin_country'),
-                        support_contact=brand_data.get('brand_support_number'),
-                        support_email=brand_data.get('brand_support_email'),
-                        address=brand_data.get('manufacturer_address')
+                        support_contact=brand_data.get('brand_support_number') if brand_data.get('brand_support_number') else 'None',
+                        support_email=brand_data.get('brand_support_email') if brand_data.get('brand_support_email') else 'None',
+                        address=brand_data.get('manufacturer_address') if brand_data.get('manufacturer_address') else 'None'
                     )
                     brand.save()
                     self.stdout.write(self.style.SUCCESS(f"Brand '{brand_name}' added successfully."))

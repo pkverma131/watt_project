@@ -96,9 +96,14 @@ class Command(BaseCommand):
             # Inside the calculate_default_bill_amount method
             wattage_spec = product.producttospecification_set.filter(specification__label='Cooling Capacity').first()
             energy_rating_spec = product.producttospecification_set.filter(specification__label='Indian Seasonal Energy Efficiency Ratio (ISEER)').first()
-            coverage_area_spec = product.producttospecification_set.filter(specification__label='Approximate Coverage Area(Sq.Ft)').first()
+            coverage_area_spec = product.producttospecification_set.filter(specification__label='Coverage Area').first()
 
-            if wattage_spec and energy_rating_spec and coverage_area_spec:
+            print(wattage_spec)
+            print(energy_rating_spec)
+            print(coverage_area_spec)
+
+            if wattage_spec and energy_rating_spec:
+                print(wattage_spec.specification.value)
                 if 'Watts' in wattage_spec.specification.value:
                     wattage_match = re.search(r'(\d+)\s*(?:Watts)?', wattage_spec.specification.value)
                     if wattage_match:
@@ -118,13 +123,15 @@ class Command(BaseCommand):
                     energy_rating = float(get_rating(energy_rating))
                 else:
                     energy_rating = float(energy_rating)
+            coverage_area = 0
+            if coverage_area_spec:
                 if 'Sq.' in coverage_area_spec.specification.value:
                     coverage_area_match = re.search(r'(\d+)', coverage_area_spec.specification.value)
                     if coverage_area_match:
                         coverage_area = int(coverage_area_match.group(1))
                 else:
                     coverage_area = int(coverage_area_spec.specification.value)
-            # Calculate default_bill_amount based on provided specifications
+                # Calculate default_bill_amount based on provided specifications
             hourly_energy_consumption = calculate_hourly_energy_consumption(wattage,energy_rating)
             daily_energy_consumption = hourly_energy_consumption * default_daily_usage_hours
             monthly_units = daily_energy_consumption * number_of_days

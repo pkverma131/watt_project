@@ -5,6 +5,7 @@ import Footer from './Footer';
 import BillCalculator from './BillCalculator';
 import ProductDescription from './ProductDescription';
 import ProductHighlights from './ProductHighlights';
+import { API_URL } from './app.settings';
 
 const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -12,7 +13,7 @@ const ProductDetailsPage = () => {
 
   useEffect(() => {
     // Fetch the product details from the API using the productId from the URL
-    fetch(`http://localhost:8000/catalogue/products/${productId}/`)
+    fetch(`${API_URL}/catalogue/products/${productId}/`)
       .then((response) => response.json())
       .then((data) => setProductDetails(data))
       .catch((error) => console.error('Error fetching product details:', error));

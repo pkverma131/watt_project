@@ -19,13 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from wagtail.admin import urls as wagtailadmin_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("wagtail-admin/", include(wagtailadmin_urls)),
     path('', include('index.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('catalogue/', include('catalogue.urls')),
-    path('blog/', include('blog.urls'))
+    path('blog/', include('blog.urls')),
+    path('article/', include('article.urls'))
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

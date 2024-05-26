@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import Navigation from './Navigation';
 import Footer from './Footer';
-import BlogPostItem from './BlogPostItem'; // Import the new component
+import BlogPostItem from './BlogPostItem';
+import { API_URL } from './app.settings';
 
 const BlogListingPage = () => {
   const [blogPosts, setBlogPosts] = useState([]);
 
   useEffect(() => {
     // Fetch blog posts from the API
-    fetch('http://localhost:8000/blog/posts/')
+    fetch(`${API_URL}/article/api/v2/posts/`)
       .then((response) => response.json())
-      .then((data) => setBlogPosts(data))
+      .then((data) => {
+        // Extract blog post items from the response
+        const items = data.items || [];
+        setBlogPosts(items);
+      })
       .catch((error) => console.error('Error fetching blog posts:', error));
   }, []);
 

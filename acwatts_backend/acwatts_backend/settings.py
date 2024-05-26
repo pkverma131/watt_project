@@ -25,17 +25,26 @@ SECRET_KEY = 'django-insecure-)jj@vyd8c0hxib@a@u8jcj$j#n74_%+naxeo*b4xk3p^tz6*r7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["165.22.210.104","acwatts.in","localhost"]
-
-# CORS_ALLOWED_ORIGINS = [
-#     'http://localhost:3000',
-# ]
+ALLOWED_HOSTS = ["*"]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
 INSTALLED_APPS = [
+    'article.apps.ArticleConfig',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail',
+    'taggit',
     'corsheaders',
     'rest_framework',
     'django.contrib.admin',
@@ -51,6 +60,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'acwatts_backend.urls'
@@ -142,3 +153,7 @@ STATIC_ROOT = '/var/www/acwatts/static/'
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = '/var/www/acwatts/media/'
+
+WAGTAIL_SITE_NAME='acwatts'
+
+WAGTAILADMIN_BASE_URL = 'https://www.acwatts.in/article'
