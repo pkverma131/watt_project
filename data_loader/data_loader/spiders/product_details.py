@@ -47,8 +47,9 @@ class ProductDetailsSpider(scrapy.Spider):
             counter += 1
             yield scrapy.Request(url=url, callback=self.parse)
             print(counter)
-            if counter > 9:
-                break
+            time.sleep(2)
+            # if counter > 9:
+            #     break
 
     def parse(self, response):
         self.driver.get(response.url)
@@ -110,7 +111,7 @@ class ProductDetailsSpider(scrapy.Spider):
 
         save_json_file(filename, json.dumps(product_details))
 
-        time.sleep(1)
+        time.sleep(2)
 
     def closed(self, reason):
         self.driver.quit()

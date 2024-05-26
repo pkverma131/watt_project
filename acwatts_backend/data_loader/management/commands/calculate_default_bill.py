@@ -117,12 +117,16 @@ class Command(BaseCommand):
                 else:
                     wattage = int(wattage_spec.specification.value)
                 energy_rating = energy_rating_spec.specification.value
-                if 'ISEER' in energy_rating:
-                    energy_rating = float(convert_iseer_to_star_rating(energy_rating))
-                elif 'Wh/Wh' in energy_rating or 'W/W' in energy_rating:
-                    energy_rating = float(get_rating(energy_rating))
-                else:
-                    energy_rating = float(energy_rating)
+                try:
+                    if 'ISEER' in energy_rating:
+                        energy_rating = float(convert_iseer_to_star_rating(energy_rating))
+                    elif 'Wh/Wh' in energy_rating or 'W/W' in energy_rating:
+                        energy_rating = float(get_rating(energy_rating))
+                    else:
+                        energy_rating = float(energy_rating)
+                except Exception as e:
+                    energy_rating = 3
+                    print(f'failed to parse energy rating from {energy_rating}')
             coverage_area = 0
             if coverage_area_spec:
                 if 'Sq.' in coverage_area_spec.specification.value:

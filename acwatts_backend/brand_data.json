@@ -1,11 +1,35 @@
 [
   {
     "brand_name": "Blue Star",
-    "manufacturer_address": "Manufacturer Name & Address: Blue Star | Kasturi Buildings Mohan T Advani Chowk Jamshedji Tata Road Mumbai - 400020",
+    "manufacturer_address": null,
     "brand_support_number": null,
     "brand_support_email": null,
-    "origin_country": "China",
+    "origin_country": "India",
     "brand_country": "India"
+  },
+  {
+    "brand_name": "CANDY",
+    "manufacturer_address": null,
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "India"
+  },
+  {
+    "brand_name": "Candy",
+    "manufacturer_address": "Manufacturer Name and Address: Haier Appliances India Pvt.Ltd., B-3, Ranjangaon Growth Centre, MIDC Shirur, Pune-412209 Maharashtra",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "Italy"
+  },
+  {
+    "brand_name": "Carrier",
+    "manufacturer_address": "Manufacturer Name & Address: Plot No-A05, Supa-Parner Industrial Park,Near Mhasne Phata, Tal-Parner, Dist-Ahmednagar,Maharashtra-414301",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "USA"
   },
   {
     "brand_name": "Croma",
@@ -16,12 +40,68 @@
     "brand_country": "India"
   },
   {
+    "brand_name": "DAIKIN",
+    "manufacturer_address": "Manufacturer Name & Address: Daikin Airconditioning India Pvt. Ltd. 12th Floor Ambience Tower Ambience Island NH-8 Gurgaon -122002 Haryana",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "Japan"
+  },
+  {
+    "brand_name": "Electrolux",
+    "manufacturer_address": null,
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "Sweden"
+  },
+  {
     "brand_name": "Godrej",
     "manufacturer_address": "Manufacturer Name & Address: Godrej  Boyce Manufacturing Company Limited, Pirojshanagar, Vikhroli, Mumbai - 400079, India",
     "brand_support_number": null,
     "brand_support_email": null,
     "origin_country": "India",
     "brand_country": "India"
+  },
+  {
+    "brand_name": "Haier",
+    "manufacturer_address": "Manufacturer Name & Address: Haier Appliance India Pvt Ltd. Building No 1, Okhla Industrial Estate Phase III, New Delhi-110020",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "China"
+  },
+  {
+    "brand_name": "Hisense",
+    "manufacturer_address": null,
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "China"
+  },
+  {
+    "brand_name": "HITACHI",
+    "manufacturer_address": "Manufacturer Name & Address: JCH-IN., Hitachi Complex, Karannagar, Kadi. Dist. Mehsana- 382715. Gujarat. India",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "Japan"
+  },
+  {
+    "brand_name": "IFB",
+    "manufacturer_address": "Manufacturer Name & Address : IFB Industries Limites, N7, Verna Insutrial Estate, Goa 403726",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "India"
+  },
+  {
+    "brand_name": "LG",
+    "manufacturer_address": "Manufacturer Name & Address: LG Electronics India Pvt. Ltd. Plot No. 51 Udyog Vihar Surajpur-Kasna Road Greater Noida - 201 306 (U.P.)",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "South Korea"
   },
   {
     "brand_name": "LLOYD",
@@ -32,8 +112,48 @@
     "brand_country": "India"
   },
   {
+    "brand_name": "Midea",
+    "manufacturer_address": "Manufacturer Name & Address : Plot No-A05, Supa-Parner Industrial Park,Near Mhasne Phata, Tal-Parner, Dist-Ahmednagar,Maharashtra-414301",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "China"
+  },
+  {
+    "brand_name": "MITSUBISHI HEAVY",
+    "manufacturer_address": "Importer Name & Address: Mitsubishi Electric Corporation | International Business Centre | M 38/1 Connaught Place Delhi DL 110001 IN",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "Thailand",
+    "brand_country": "Japan"
+  },
+  {
+    "brand_name": "O GENERAL",
+    "manufacturer_address": "Manufacturer Name & Address: O General, ETA House, 3rd Floor, #71/63, Opp. Loyola College, Sterling Road, Nungambakkam, Chennai \u2013 6000034, Tamilnadu",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "Japan"
+  },
+  {
+    "brand_name": "Panasonic",
+    "manufacturer_address": "Manufacture Name and Address: Panasonic India Pvt. Ltd. | 12th Floor Ambience Tower NH-8 Ambience Island DLF Phase 3 Sector 24 Gurugram Haryana 122002 Indiac",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "Japan"
+  },
+  {
+    "brand_name": "SAMSUNG",
+    "manufacturer_address": "Manufacturer Name & Address: Samsung India Electronics Pvt. Ltd., 6th Floor, DLF Centre, Sansad Marg, New Delhi-110001",
+    "brand_support_number": null,
+    "brand_support_email": null,
+    "origin_country": "India",
+    "brand_country": "South Korea"
+  },
+  {
     "brand_name": "VOLTAS",
-    "manufacturer_address": "Manufacturer Name & Address: Voltas Limited. Voltas House 'A' Block Dr. Babasaheb Ambedkar Rd Chinchpokli Mumbai - 400 033 India",
+    "manufacturer_address": "Manufacturer Name & Address: Voltas Ltd, Voltas House A, Dr. Babasaheb Ambedkar Road, Chinchpokli, Mumbai, Maharashtra-400 033, India",
     "brand_support_number": null,
     "brand_support_email": null,
     "origin_country": "India",
