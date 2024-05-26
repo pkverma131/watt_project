@@ -31,7 +31,7 @@ const RecentPosts = ({ tags }) => {
           // Exclude the current page from the recent posts list
           post.id !== parseInt(currentPostId) && (
             <li key={post.id}>
-              <Card className="blog-post-item">
+              <Card className="blog-post-item" border="0">
                 <Card.Body>
                   <Card.Title>
                     <Link to={`/blog/${post.id}`}>{post.title}</Link>

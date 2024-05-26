@@ -1,19 +1,22 @@
 /* BlogPostItem.css */
+
 .blog-post-item {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .blog-post-item h2 {
-    margin-bottom: 10px;
-  }
-  
-  .blog-post-item p.key-points {
-    font-weight: bold;
-  }
-  .blog-post-item a {
-    text-decoration: none;
-    color: #007bff;
-  }
+  box-shadow: none; /* Remove shadow if needed */
+  border: none; /* Ensure border is removed */
+  margin-bottom: 20px; /* Add spacing between cards if necessary */
+}
+
+.blog-post-item .card-title a {
+  text-decoration: none;
+  color: #007bff; /* Customize link color */
+}
+
+.blog-post-item .card-title a:hover {
+  text-decoration: underline; /* Customize link hover effect */
+}
+
+.blog-post-item .card-img-top {
+  border-radius: 0; /* Remove image border-radius if needed */
+}
+
+/* Add more styles as needed */

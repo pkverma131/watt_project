@@ -6,7 +6,7 @@ import { API_URL } from './app.settings';
 
 const BlogPostItem = ({ post }) => {
   return (
-    <Card className="blog-post-item">
+    <Card className="blog-post-item" border="0">
       <Card.Body>
       <Card.Title>
           <Link to={`/blog/${post.id}`}>{post.title}</Link>
