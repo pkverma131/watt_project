@@ -11,7 +11,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        exclude = ('highlights', 'model_number', 'thumbnail', 'created_by', 'updated_by', 'brand')
+        exclude = ('model_number', 'thumbnail', 'created_by', 'updated_by', 'brand')
 
 class BillAmountSerializer(serializers.ModelSerializer):
     class Meta:
