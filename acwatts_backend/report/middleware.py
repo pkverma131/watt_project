@@ -1,5 +1,3 @@
-# stat_counter/middleware.py
-
 from django.utils.deprecation import MiddlewareMixin
 from django.conf import settings
 from .models import SiteVisitor
@@ -15,14 +13,12 @@ class SiteVisitorMiddleware(MiddlewareMixin):
 
         # Update or create a SiteVisitor entry for the current path and IP address
         site_visitor, created = SiteVisitor.objects.get_or_create(path=request.path_info, ip_address=ip_address)
-        
-        # Increment hits
         site_visitor.hits += 1
-        
-        # Increment unique visits only if it's a new record
         if created:
             site_visitor.unique_visits += 1
-
+        else:
+            if not SiteVisitor.objects.filter(path=request.path_info, ip_address=ip_address).exists():
+                site_visitor.unique_visits += 1
         site_visitor.save()
 
         # Continue processing the request

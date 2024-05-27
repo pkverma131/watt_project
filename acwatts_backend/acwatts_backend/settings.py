@@ -70,7 +70,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    'report.middleware.StatCounterMiddleware',
+    'report.middleware.SiteVisitorMiddleware',
 ]
 
 ROOT_URLCONF = 'acwatts_backend.urls'
