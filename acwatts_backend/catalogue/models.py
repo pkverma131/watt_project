@@ -98,7 +98,7 @@ class ProductLink(AuditModelMixin):
 
 
 class ImportantSpecification(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='important_specifications')
     wattage = models.IntegerField()
     coverage_area = models.IntegerField()
     energy_rating = models.FloatField()
