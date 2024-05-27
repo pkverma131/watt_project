@@ -1,6 +1,7 @@
 from django.utils.deprecation import MiddlewareMixin
 from django.conf import settings
-from .models import SiteVisitor
+from django.utils import timezone
+from .models import SiteVisitor, SessionData
 import logging
 
 logger = logging.getLogger(__name__)
@@ -23,6 +24,17 @@ class SiteVisitorMiddleware(MiddlewareMixin):
                 site_visitor.unique_visits += 1
             site_visitor.save()
 
+            # Track session based on IP address
+            session_key = request.session.session_key
+            if session_key:
+                if not SessionData.objects.filter(session_key=session_key).exists():
+                    # New session, create a new SessionData entry
+                    SessionData.objects.create(
+                        session_key=session_key,
+                        ip_address=ip_address,
+                        created_at=timezone.now()
+                    )
+
         except Exception as e:
             logger.error(f"Error processing request: {e}")
 
@@ -31,9 +43,13 @@ class SiteVisitorMiddleware(MiddlewareMixin):
 
     def get_client_ip(self, request):
         # Method to retrieve the client's IP address from the request
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-        if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]
-        else:
-            ip = request.META.get('REMOTE_ADDR')
-        return ip
+        try:
+            x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+            if x_forwarded_for:
+                ip = x_forwarded_for.split(',')[0]
+            else:
+                ip = request.META.get('REMOTE_ADDR')
+            return ip
+        except Exception as e:
+            logger.error(f"Error getting client IP: {e}")
+            return None

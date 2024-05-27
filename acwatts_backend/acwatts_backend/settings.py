@@ -166,3 +166,6 @@ STAT_COUNTER_EXCLUDE_URLS = [
 ]
 
 LOGIN_URL = '/admin/login/'
+
+# Set session expiry time to 24 hours (86400 seconds)
+SESSION_COOKIE_AGE = 86400
