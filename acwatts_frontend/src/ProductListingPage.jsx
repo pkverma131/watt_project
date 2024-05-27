@@ -107,7 +107,9 @@ const ProductListingPage = () => {
                     Wattage: {product.important_specification.wattage}, 
                     Coverage Area: {product.important_specification.coverage_area}, 
                     Energy Rating: {product.important_specification.energy_rating}, 
-                    Default Bill Amount: {product.important_specification.default_bill_amount}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Expected Bill Amount (if used 8 hours daily):Rs. {product.important_specification.default_bill_amount}
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Link to={`/catalogue/product/${product.id}`}>View Details</Link>
