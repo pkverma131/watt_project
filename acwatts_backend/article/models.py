@@ -8,6 +8,7 @@ from wagtail.api import APIField
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 from modelcluster.fields import ParentalKey
+from django.utils.html import strip_tags
 
 
 class BlogPageTag(TaggedItemBase):
@@ -34,6 +35,12 @@ class BlogPage(Page):
         ('image', ImageChooserBlock()),
     ])
 
+    def blog_snippet(self):
+        # Extract the first line from the body StreamField
+        first_paragraph = self.body[0].value.source  # Assuming the first block is a paragraph
+        first_line = first_paragraph.split('\n')[0].strip()
+        return strip_tags(first_line)
+
     content_panels = Page.content_panels + [
         FieldPanel('author'),
         FieldPanel('date'),
@@ -49,4 +56,5 @@ class BlogPage(Page):
         APIField('post_image'),
         APIField('author'),
         APIField('tags'),
+        APIField('blog_snippet'),
     ]
