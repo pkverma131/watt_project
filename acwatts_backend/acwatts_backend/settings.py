@@ -164,3 +164,5 @@ STAT_COUNTER_EXCLUDE_URLS = [
     '/admin/',
     '/static/',
 ]
+
+LOGIN_URL = '/admin/login/'

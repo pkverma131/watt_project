@@ -28,7 +28,8 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('catalogue/', include('catalogue.urls')),
     path('blog/', include('blog.urls')),
-    path('article/', include('article.urls'))
+    path('article/', include('article.urls')),
+    path('report/', include('report.urls'))
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
