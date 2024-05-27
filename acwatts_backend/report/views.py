@@ -13,7 +13,7 @@ def site_statistics_view(request):
     total_visits_to_website = SiteVisitor.objects.aggregate(total_hits=Sum('hits')).get('total_hits') or 0
 
     # Total unique visits to the website (count distinct IP addresses)
-    total_unique_visits_to_website = SiteVisitor.objects.aggregate(total_unique_visits=Count('ip_address'), distinct=True).get('total_unique_visits') or 0
+    total_unique_visits_to_website = SiteVisitor.objects.aggregate(total_unique_visits=Count('ip_address', distinct=True)).get('total_unique_visits') or 0
 
     # Path-wise total visits and unique visits
     path_statistics = SiteVisitor.objects.values('path').annotate(
