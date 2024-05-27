@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'data_loader.apps.DataLoaderConfig',
     'index.apps.IndexConfig',
     'blog.apps.BlogConfig',
+    'report.apps.ReportConfig'
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'report.middleware.StatCounterMiddleware',
 ]
 
 ROOT_URLCONF = 'acwatts_backend.urls'
@@ -157,3 +159,8 @@ MEDIA_ROOT = '/var/www/acwatts/media/'
 WAGTAIL_SITE_NAME='acwatts'
 
 WAGTAILADMIN_BASE_URL = 'https://www.acwatts.in/article'
+
+STAT_COUNTER_EXCLUDE_URLS = [
+    '/admin/',
+    '/static/',
+]

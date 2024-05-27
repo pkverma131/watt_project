@@ -19,3 +19,12 @@ create database acm_db;
 GRANT ALL PRIVILEGES ON acm_db.* TO 'acmandi'@'localhost';
 FLUSH PRIVILEGES;
 sudo apt install libmysqlclient-dev python-dev
+
+scp -r accwatts watt_project/acwatts_frontend/dist/* root@165.22.210.104:/var/www/acwatts/html
+
+scp -r accwatts acm_db_bckp.sql root@165.22.210.104:/home/playground
+
+git pull
+systemctl restart gunicorn.service
+systemctl restart gunicorn.socket
+sudo systemctl restart nginx
