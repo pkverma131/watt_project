@@ -7,7 +7,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        exclude = ('model_number', 'thumbnail', 'created_by', 'updated_by', 'brand')
+        exclude = ('model_number', 'thumbnail', 'created_by', 'updated_by', 'brand', 'created_at','updated_at', 'description')
 
     def get_important_specification(self, obj):
         important_specification = obj.important_specifications.first()
