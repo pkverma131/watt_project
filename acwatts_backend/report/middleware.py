@@ -10,7 +10,7 @@ class SiteVisitorMiddleware(MiddlewareMixin):
     def process_request(self, request):
         try:
             # Check if the current path should be excluded from tracking
-            exclude_paths = ['/admin/', '/wagtail-admin/', '/media/'] + getattr(settings, 'STAT_COUNTER_EXCLUDE_URLS', [])
+            exclude_paths = ['/admin/', '/wagtail-admin/', '/media/', '/report/'] + getattr(settings, 'STAT_COUNTER_EXCLUDE_URLS', [])
             if any(request.path_info.startswith(path) for path in exclude_paths):
                 return None
 
