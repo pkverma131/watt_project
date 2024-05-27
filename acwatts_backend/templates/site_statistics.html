@@ -1,0 +1,79 @@
+<!-- site_statistics.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Site Statistics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        .back-to-admin {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-to-admin:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Site Statistics</h1>
+
+    <h2>Total Visits to Website: {{ total_visits_to_website }}</h2>
+    <h2>Total Unique Visits to Website: {{ total_unique_visits_to_website }}</h2>
+
+    <h3>Path-wise Statistics:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Path</th>
+                <th>Total Visits</th>
+                <th>Total Unique Visits</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in path_statistics %}
+            <tr>
+                <td>{{ stat.path }}</td>
+                <td>{{ stat.total_hits }}</td>
+                <td>{{ stat.total_unique_visits }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="back-to-admin" href="/admin/">Back to Admin Site</a>
+</body>
+</html>
