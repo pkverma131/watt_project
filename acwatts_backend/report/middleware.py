@@ -9,7 +9,8 @@ class SiteVisitorMiddleware(MiddlewareMixin):
     def process_request(self, request):
         try:
             # Check if the current path should be excluded from tracking
-            if request.path_info.startswith('/admin/') or request.path_info in getattr(settings, 'STAT_COUNTER_EXCLUDE_URLS', []):
+            exclude_paths = ['/admin/', '/wagtail-admin/', '/media/'] + getattr(settings, 'STAT_COUNTER_EXCLUDE_URLS', [])
+            if any(request.path_info.startswith(path) for path in exclude_paths):
                 return None
 
             # Get client IP address
