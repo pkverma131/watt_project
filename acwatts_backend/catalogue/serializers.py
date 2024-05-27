@@ -1,17 +1,17 @@
 from rest_framework import serializers
-from .models import Product, ProductToProductHighlight, ImportantSpecification
+from .models import Product, ImportantSpecification
+
+class ImportantSpecificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImportantSpecification
+        fields = ('wattage', 'coverage_area', 'energy_rating', 'default_bill_amount')
 
 class ProductSerializer(serializers.ModelSerializer):
-    highlights = serializers.SerializerMethodField()
+    important_specification = ImportantSpecificationSerializer()
 
     class Meta:
         model = Product
-        fields = '__all__'
-
-    def get_highlights(self, obj):
-        product_highlights = ProductToProductHighlight.objects.filter(product=obj)
-        highlights = product_highlights.values_list('highlight__highlight', flat=True)
-        return list(highlights)
+        exclude = ('highlights', 'model_number', 'thumbnail', 'created_by', 'updated_by', 'brand')
 
 class BillAmountSerializer(serializers.ModelSerializer):
     class Meta:
