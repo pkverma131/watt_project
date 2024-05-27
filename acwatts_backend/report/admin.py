@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import SiteVisitor
 
-# Register your models here.
+class SiteVisitorAdmin(admin.ModelAdmin):
+    list_display = ('path', 'ip_address', 'hits', 'unique_visits')
+    search_fields = ('path', 'ip_address')
+    list_filter = ('path',)
+    ordering = ('-hits',)
+
+admin.site.register(SiteVisitor, SiteVisitorAdmin)
