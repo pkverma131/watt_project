@@ -8,11 +8,14 @@ from django.db import models
 from .models import Brand, Product, ImportantSpecification
 from .serializers import ProductSerializer, BillAmountSerializer, BrandSerializer
 
-class BrandViewSet(viewsets.ModelViewSet):
-    queryset = Brand.objects.values_list('name', flat=True)
+class BrandViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Brand.objects.all()
     serializer_class = BrandSerializer
-    pagination_class = PageNumberPagination
-    pagination_class.page_size = 20
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        brands = queryset.values_list('name', flat=True)
+        return Response(brands)
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.prefetch_related('producttoproducthighlight_set__highlight').all()
