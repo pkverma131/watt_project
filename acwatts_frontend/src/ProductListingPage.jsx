@@ -1,3 +1,4 @@
+// ProductListingPage.js
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Card, ListGroup } from 'react-bootstrap';
@@ -15,25 +16,19 @@ const ProductListingPage = () => {
   const [maxDefaultBillAmount, setMaxDefaultBillAmount] = useState('');
   const [minCoverageArea, setMinCoverageArea] = useState('');
   const [brand, setBrand] = useState('');
-  const [acType, setAcType] = useState('');
-  const [acCapacity, setAcCapacity] = useState('');
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const initialMaxDefaultBillAmount = queryParams.get('max_default_bill_amount');
   const initialMinCoverageArea = queryParams.get('min_coverage_area');
   const initialBrand = queryParams.get('brand');
-  const initialAcType = queryParams.get('ac_type');
-  const initialAcCapacity = queryParams.get('ac_capacity');
 
   useEffect(() => {
     setMaxDefaultBillAmount(initialMaxDefaultBillAmount || '');
     setMinCoverageArea(initialMinCoverageArea || '');
     setBrand(initialBrand || '');
-    setAcType(initialAcType || '');
-    setAcCapacity(initialAcCapacity || '');
     setCurrentPage(Number(queryParams.get('page')) || 1);
-  }, [initialMaxDefaultBillAmount, initialMinCoverageArea, initialBrand, initialAcType, initialAcCapacity, queryParams]);
+  }, [initialMaxDefaultBillAmount, initialMinCoverageArea, initialBrand, queryParams]);
 
   const navigate = useNavigate();
 
@@ -50,12 +45,6 @@ const ProductListingPage = () => {
         if (brand) {
           apiUrl += `&brand=${brand}`;
         }
-        if (acType) {
-          apiUrl += `&ac_type=${acType}`;
-        }
-        if (acCapacity) {
-          apiUrl += `&ac_capacity=${acCapacity}`;
-        }
 
         const response = await fetch(apiUrl);
         if (!response.ok) {
@@ -71,15 +60,13 @@ const ProductListingPage = () => {
     };
 
     fetchProducts();
-  }, [currentPage, maxDefaultBillAmount, minCoverageArea, brand, acType, acCapacity]);
+  }, [currentPage, maxDefaultBillAmount, minCoverageArea, brand]);
 
   const handleFilterChange = (filters) => {
     setCurrentPage(1);
     setMaxDefaultBillAmount(filters.max_default_bill_amount || '');
     setMinCoverageArea(filters.min_coverage_area || '');
     setBrand(filters.brand || '');
-    setAcType(filters.ac_type || '');
-    setAcCapacity(filters.ac_capacity || '');
 
     const queryParams = new URLSearchParams();
     if (filters.max_default_bill_amount) {
@@ -90,12 +77,6 @@ const ProductListingPage = () => {
     }
     if (filters.brand) {
       queryParams.set('brand', filters.brand);
-    }
-    if (filters.ac_type) {
-      queryParams.set('ac_type', filters.ac_type);
-    }
-    if (filters.ac_capacity) {
-      queryParams.set('ac_capacity', filters.ac_capacity);
     }
     const queryString = queryParams.toString();
     const newUrl = `${window.location.pathname}${queryString ? `?${queryString}` : ''}`;

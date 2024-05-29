@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { API_URL } from './app.settings';
 
 const ProductFilter = ({ onFilterChange }) => {
   const [maxDefaultBillAmount, setMaxDefaultBillAmount] = useState('');
   const [coverageArea, setCoverageArea] = useState('');
   const [brand, setBrand] = useState('');
-  const [acType, setAcType] = useState('');
-  const [acCapacity, setAcCapacity] = useState('');
+  const [brands, setBrands] = useState([]);
 
-  const brands = [
-    "Blue Star", "Croma", "Godrej", "LLOYD", "VOLTAS", "CANDY", "Carrier",
-    "DAIKIN", "Electrolux", "Haier", "Hisense", "HITACHI", "IFB", "LG",
-    "Midea", "MITSUBISHI HEAVY", "O GENERAL", "Panasonic", "SAMSUNG"
-  ];
+  useEffect(() => {
+    const fetchBrands = async () => {
+      try {
+        const response = await fetch(`${API_URL}/catalogue/brands`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setBrands(data);
+      } catch (error) {
+        console.error('Error fetching brands:', error);
+      }
+    };
 
-  const acTypes = ["Split", "Window"];
-  const acCapacities = ["1 Ton", "1.5 Ton", "2 Ton"];
+    fetchBrands();
+  }, []);
 
   const handleFilterSubmit = (e) => {
     e.preventDefault();
@@ -22,8 +30,6 @@ const ProductFilter = ({ onFilterChange }) => {
       max_default_bill_amount: maxDefaultBillAmount,
       min_coverage_area: coverageArea,
       brand: brand,
-      ac_type: acType,
-      ac_capacity: acCapacity,
     });
   };
 
@@ -88,42 +94,6 @@ const ProductFilter = ({ onFilterChange }) => {
               {brands.map((brand) => (
                 <option key={brand} value={brand}>
                   {brand}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="col-auto">
-            <label htmlFor="acType">AC Type:</label>
-          </div>
-          <div className="col-auto">
-            <select
-              id="acType"
-              className="form-control"
-              value={acType}
-              onChange={(e) => setAcType(e.target.value)}
-            >
-              <option value="">Select a type</option>
-              {acTypes.map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="col-auto">
-            <label htmlFor="acCapacity">AC Capacity:</label>
-          </div>
-          <div className="col-auto">
-            <select
-              id="acCapacity"
-              className="form-control"
-              value={acCapacity}
-              onChange={(e) => setAcCapacity(e.target.value)}
-            >
-              <option value="">Select a capacity</option>
-              {acCapacities.map((capacity) => (
-                <option key={capacity} value={capacity}>
-                  {capacity}
                 </option>
               ))}
             </select>
