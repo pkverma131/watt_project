@@ -1,10 +1,11 @@
 from rest_framework import serializers
-from .models import Product, ProductToProductHighlight, ImportantSpecification
+from .models import Product, ProductToProductHighlight, ImportantSpecification, ProductToSpecification, Specification
 
 
 class ProductSerializer(serializers.ModelSerializer):
     highlights = serializers.SerializerMethodField()
     important_specification = serializers.SerializerMethodField()
+    specifications = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -26,6 +27,16 @@ class ProductSerializer(serializers.ModelSerializer):
             }
         else:
             return None
+    
+    def get_specifications(self, obj):
+        relevant_labels = ['Air Conditioner Type', 'Air Conditioner Capacity', 'Brand']
+        product_specs = ProductToSpecification.objects.filter(
+            product=obj, 
+            specification__label__in=relevant_labels
+        ).select_related('specification')
+        
+        specs_dict = {spec.specification.label: spec.specification.value for spec in product_specs}
+        return specs_dict
 
 class BillAmountSerializer(serializers.ModelSerializer):
     class Meta:

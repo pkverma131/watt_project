@@ -101,19 +101,21 @@ const ProductListingPage = () => {
             {products.map((product) => (
               <div key={product.id} className="col-md-12 mb-3">
                 <Card>
-                  <Card.Header>{product.title}</Card.Header>
+                  <Card.Header>
+                    <h5>{product.title}</h5>
+                  </Card.Header>
                   <ListGroup variant="flush">
-                  <ListGroup.Item>
-                    Wattage: {product.important_specification.wattage}, 
-                    Coverage Area: {product.important_specification.coverage_area}, 
-                    Energy Rating: {product.important_specification.energy_rating}, 
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    Expected Bill Amount (if used 8 hours daily): Rs. {product.important_specification.default_bill_amount}
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                    <Link to={`/catalogue/product/${product.id}`}>View Details</Link>
-                  </ListGroup.Item>
+                    <ListGroup.Item>
+                      Wattage: <strong>{product.important_specification.wattage}</strong>, 
+                      Coverage Area: <strong>{product.important_specification.coverage_area}</strong>, 
+                      Energy Rating: <strong>{product.important_specification.energy_rating}</strong>
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      Expected Bill Amount (if used 8 hours daily): <strong>Rs.{product.important_specification.default_bill_amount}</strong>
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      <Link to={`/catalogue/product/${product.id}`}>View Details</Link>
+                    </ListGroup.Item>
                   </ListGroup>
                 </Card>
               </div>
