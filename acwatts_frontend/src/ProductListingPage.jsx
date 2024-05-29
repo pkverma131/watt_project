@@ -104,9 +104,9 @@ const ProductListingPage = () => {
                   <Card.Header>{product.title}</Card.Header>
                   <ListGroup variant="flush">
                   <ListGroup.Item>
-                    Wattage: {product.importantspecification.wattage}, 
-                    Coverage Area: {product.importantspecification.coverage_area}, 
-                    Energy Rating: {product.importantspecification.energy_rating}, 
+                    Wattage: {product.important_specification.wattage}, 
+                    Coverage Area: {product.important_specification.coverage_area}, 
+                    Energy Rating: {product.important_specification.energy_rating}, 
                   </ListGroup.Item>
                   <ListGroup.Item>
                     Expected Bill Amount (if used 8 hours daily): Rs. {product.important_specification.default_bill_amount}
