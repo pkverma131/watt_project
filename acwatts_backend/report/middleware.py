@@ -17,13 +17,6 @@ class SiteVisitorMiddleware(MiddlewareMixin):
             # Get client IP address
             ip_address = self.get_client_ip(request)
 
-            # Update or create a SiteVisitor entry for the current path and IP address
-            site_visitor, created = SiteVisitor.objects.get_or_create(path=request.path_info, ip_address=ip_address)
-            site_visitor.hits += 1
-            if created:
-                site_visitor.unique_visits += 1
-            site_visitor.save()
-
             # Track session based on IP address
             session_key = request.session.session_key
             if session_key:
@@ -34,6 +27,13 @@ class SiteVisitorMiddleware(MiddlewareMixin):
                         ip_address=ip_address,
                         created_at=timezone.now()
                     )
+
+            # Update or create a SiteVisitor entry for the current path and IP address
+            site_visitor, created = SiteVisitor.objects.get_or_create(path=request.path_info, ip_address=ip_address)
+            site_visitor.hits += 1
+            if created:
+                site_visitor.unique_visits += 1
+            site_visitor.save()
 
         except Exception as e:
             logger.error(f"Error processing request: {e}")
