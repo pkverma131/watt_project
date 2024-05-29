@@ -1,6 +1,11 @@
 from rest_framework import serializers
-from .models import Product, ProductToProductHighlight, ImportantSpecification, ProductToSpecification, Specification
+from .models import Brand, Product, ProductToProductHighlight, ImportantSpecification, ProductToSpecification, Specification
 
+
+class BrandSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Brand
+        fields =('name')
 
 class ProductSerializer(serializers.ModelSerializer):
     highlights = serializers.SerializerMethodField()

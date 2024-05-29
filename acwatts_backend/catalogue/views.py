@@ -5,8 +5,14 @@ from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
 from .filters import ProductFilter
 from django.db import models
-from .models import Product, ImportantSpecification
-from .serializers import ProductSerializer, BillAmountSerializer
+from .models import Brand, Product, ImportantSpecification
+from .serializers import ProductSerializer, BillAmountSerializer, BrandSerializer
+
+class BrandViewSet(viewsets.ModelViewSet):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
+    pagination_class = PageNumberPagination
+    pagination_class.page_size = 10  # Set the page size to 10 items per page
 
 
 class ProductViewSet(viewsets.ModelViewSet):
