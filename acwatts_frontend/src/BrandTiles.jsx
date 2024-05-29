@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { API_URL } from './app.settings';
 
 const BrandTiles = () => {
   const navigate = useNavigate();
@@ -8,9 +8,10 @@ const BrandTiles = () => {
 
   useEffect(() => {
     // Fetch the brands from the API
-    axios.get(`${API_URL}/catalogue/brands`)
-      .then(response => setBrands(response.data))
-      .catch(error => console.error('Error fetching brands:', error));
+    fetch(`${API_URL}/catalogue/brands`)
+        .then((response) => response.json())
+        .then((data) => setBrands(data))
+        .catch(error => console.error('Error fetching brands:', error));
   }, []);
 
   const handleTileClick = (brand) => {
