@@ -5,7 +5,7 @@ from .models import Brand, Product, ProductToProductHighlight, ImportantSpecific
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
-        fields =('name')
+        fields =('name',)
 
 class ProductSerializer(serializers.ModelSerializer):
     highlights = serializers.SerializerMethodField()
