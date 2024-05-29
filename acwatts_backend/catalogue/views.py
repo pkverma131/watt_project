@@ -9,11 +9,10 @@ from .models import Brand, Product, ImportantSpecification
 from .serializers import ProductSerializer, BillAmountSerializer, BrandSerializer
 
 class BrandViewSet(viewsets.ModelViewSet):
-    queryset = Brand.objects.all()
+    queryset = Brand.objects.values_list('name', flat=True)
     serializer_class = BrandSerializer
     pagination_class = PageNumberPagination
-    pagination_class.page_size = 10  # Set the page size to 10 items per page
-
+    pagination_class.page_size = 20
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.prefetch_related('producttoproducthighlight_set__highlight').all()
