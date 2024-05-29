@@ -29,11 +29,17 @@ class SiteVisitorMiddleware(MiddlewareMixin):
                     )
 
             # Update or create a SiteVisitor entry for the current path and IP address
-            site_visitor, created = SiteVisitor.objects.get_or_create(path=request.path_info, ip_address=ip_address)
-            site_visitor.hits += 1
-            if created:
-                site_visitor.unique_visits += 1
-            site_visitor.save()
+            try:
+                site_visitor, created = SiteVisitor.objects.get_or_create(path=request.path_info, ip_address=ip_address)
+                if created:
+                    site_visitor.unique_visits += 1
+                site_visitor.hits += 1
+                site_visitor.save()
+            except SiteVisitor.MultipleObjectsReturned:
+                # Handle the rare case where duplicates might exist
+                site_visitor = SiteVisitor.objects.filter(path=request.path_info, ip_address=ip_address).first()
+                site_visitor.hits += 1
+                site_visitor.save()
 
         except Exception as e:
             logger.error(f"Error processing request: {e}")
