@@ -8,6 +8,8 @@ class ProductFilter(django_filters.FilterSet):
     max_coverage_area = django_filters.NumberFilter(field_name='important_specification__coverage_area', lookup_expr='lte')
 
     brand = django_filters.CharFilter(field_name='brand__name', lookup_expr='icontains')
+    air_conditioner_type = django_filters.CharFilter(field_name='air_conditioner_type__name', lookup_expr='icontains')
+    air_conditioner_capacity = django_filters.CharFilter(field_name='air_conditioner_capacity__name', lookup_expr='icontains')
 
     class Meta:
         model = Product
