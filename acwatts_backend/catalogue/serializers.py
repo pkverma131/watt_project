@@ -44,7 +44,7 @@ class ProductSerializer(serializers.ModelSerializer):
     #     return specs_dict
     def get_specifications(self, obj):
         relevant_labels = ['Air Conditioner Type', 'Air Conditioner Capacity', 'Brand']
-        specs = obj.producttospecification_set.objects.filter(
+        specs = obj.producttospecification_set.filter(
             product=obj, 
             specification__label__in=relevant_labels
             ).select_related('specification')
