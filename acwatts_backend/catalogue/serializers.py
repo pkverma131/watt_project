@@ -16,7 +16,7 @@ class ProductSerializer(serializers.ModelSerializer):
         return list(highlights)
 
     def get_important_specification(self, obj):
-        important_specification = obj.important_specifications.first()
+        important_specification = obj.importantspecifications.first()
         if important_specification:
             return {
                 'wattage': important_specification.wattage,

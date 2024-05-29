@@ -7,6 +7,16 @@ const SocialMediaShare = () => {
   const location = useLocation();
   const currentUrl = window.location.href;
 
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(currentUrl)
+      .then(() => {
+        alert('Link copied to clipboard');
+      })
+      .catch((error) => {
+        console.error('Error copying link to clipboard:', error);
+      });
+  };
+
   return (
     <div className="social-media-share">
       <div className="heading">
@@ -35,6 +45,18 @@ const SocialMediaShare = () => {
         >
           <FontAwesomeIcon icon={['fab', 'linkedin']} size="2x" />
         </a>
+        <a
+          href={`whatsapp://send?text=${encodeURIComponent(currentUrl)}`}
+          data-action="share/whatsapp/share"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon icon={['fab', 'whatsapp']} size="2x" />
+        </a>
+        {/* <button onClick={handleCopyLink}>
+          <FontAwesomeIcon icon={['fas', 'link']} size="2x" />
+          <span>Copy Link</span>
+        </button> */}
       </div>
     </div>
   );
