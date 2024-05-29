@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
+from django_filters.rest_framework import DjangoFilterBackend
 from .filters import ProductFilter
 from django.db import models
 from .models import Brand, Product, ImportantSpecification
@@ -21,6 +22,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.prefetch_related('producttoproducthighlight_set__highlight').all()
     serializer_class = ProductSerializer
     pagination_class = PageNumberPagination
+    filter_backends = (DjangoFilterBackend,)
     pagination_class.page_size = 10  # Set the page size to 10 items per page
 
     # Override the get_queryset method to apply the filters

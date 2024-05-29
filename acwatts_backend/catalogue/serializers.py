@@ -33,15 +33,18 @@ class ProductSerializer(serializers.ModelSerializer):
         else:
             return None
     
-    def get_specifications(self, obj):
-        relevant_labels = ['Air Conditioner Type', 'Air Conditioner Capacity', 'Brand']
-        product_specs = ProductToSpecification.objects.filter(
-            product=obj, 
-            specification__label__in=relevant_labels
-        ).select_related('specification')
+    # def get_specifications(self, obj):
+    #     relevant_labels = ['Air Conditioner Type', 'Air Conditioner Capacity', 'Brand']
+    #     product_specs = ProductToSpecification.objects.filter(
+    #         product=obj, 
+    #         specification__label__in=relevant_labels
+    #     ).select_related('specification')
         
-        specs_dict = {spec.specification.label: spec.specification.value for spec in product_specs}
-        return specs_dict
+    #     specs_dict = {spec.specification.label: spec.specification.value for spec in product_specs}
+    #     return specs_dict
+    def get_specifications(self, obj):
+        specs = obj.producttospecification_set.all()
+        return {spec.specification.label: spec.specification.value for spec in specs}
 
 class BillAmountSerializer(serializers.ModelSerializer):
     class Meta:

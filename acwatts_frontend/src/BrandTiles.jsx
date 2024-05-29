@@ -9,9 +9,9 @@ const BrandTiles = () => {
   useEffect(() => {
     // Fetch the brands from the API
     fetch(`${API_URL}/catalogue/brands`)
-        .then((response) => response.json())
-        .then((data) => setBrands(data))
-        .catch(error => console.error('Error fetching brands:', error));
+      .then((response) => response.json())
+      .then((data) => setBrands(data))
+      .catch((error) => console.error('Error fetching brands:', error));
   }, []);
 
   const handleTileClick = (brand) => {
@@ -30,7 +30,7 @@ const BrandTiles = () => {
               onClick={() => handleTileClick(brand)}
               style={{ cursor: 'pointer' }}
             >
-              {brand.name}
+              {brand}
             </div>
           </div>
         ))}
